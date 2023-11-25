@@ -3,16 +3,16 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Alumno implements Serializable {
+public class Paciente implements Serializable {
 
-    String matricula;
+    String numID;
 
-    public String getMatricula() {
-        return matricula;
+    public String getnumID() {
+        return numID;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setnumID(String numID) {
+        this.numID = numID;
     }
 
     public String getNombre() {

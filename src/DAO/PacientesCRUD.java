@@ -1,23 +1,23 @@
 package DAO;
 
-import entidades.Alumno;
+import entidades.Paciente;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class AlumnosCRUD {
-    public void insertarAlumno(Alumno a){
+public class PacientesCRUD {
+    public void insertarPaciente(Paciente a){
         try{
             FileInputStream leer =
-                    new FileInputStream("C:\\temp\\listaAlumno.txt");
+                    new FileInputStream("C:\\temp\\listaPaciente.txt");
             ObjectInputStream miStream2 = new ObjectInputStream(leer);
             Object o = miStream2.readObject();
-            ArrayList<Alumno> otraLista = (ArrayList<Alumno>)o;
+            ArrayList<Paciente> otraLista = (ArrayList<Paciente>)o;
             otraLista.add(a);
 
             //escribir de vuelta al archivo
             FileOutputStream escribir =
-                    new FileOutputStream("C:\\temp\\listaAlumno.txt");
+                    new FileOutputStream("C:\\temp\\listaPaciente.txt");
             ObjectOutputStream miStream = new ObjectOutputStream(escribir);
             miStream.writeObject(otraLista);
             miStream.close();
@@ -32,16 +32,15 @@ public class AlumnosCRUD {
             throw new RuntimeException(e);
         }
     }
-    public Alumno buscarAlumnoPorMat(String matricula){
-        //obtener lista de alumnos desde Archivo
+    public Paciente buscarPacientePorID(String ID){
         try{
             FileInputStream leer =
-                    new FileInputStream("C:\\temp\\listaAlumno.txt");
+                    new FileInputStream("C:\\temp\\listaPaciente.txt");
             ObjectInputStream miStream2 = new ObjectInputStream(leer);
             Object o = miStream2.readObject();
-            ArrayList<Alumno> otraLista = (ArrayList<Alumno>)o;
-            for(Alumno a: otraLista){
-                if(a.getMatricula().equals(matricula)){
+            ArrayList<Paciente> otraLista = (ArrayList<Paciente>)o;
+            for(Paciente a: otraLista){
+                if(a.getnumID().equals(ID)){
                     return a;
                 }
             }
@@ -51,8 +50,8 @@ public class AlumnosCRUD {
 
 
 
-           // Alumno pruebaAlumno = otraLista.get(0);
-           // System.out.println(pruebaAlumno.getNombre());
+           // Paciente pruebaPaciente = otraLista.get(0);
+           // System.out.println(pruebaPaciente.getNombre());
 
 
         } catch (FileNotFoundException e) {
